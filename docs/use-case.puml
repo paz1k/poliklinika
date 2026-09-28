@@ -1,0 +1,26 @@
+@startuml
+left to right direction
+
+actor "Регистратор" as R
+actor "Врач" as V
+
+rectangle "Учёт пациентов в поликлинике" {
+  usecase "Добавить пациента" as A
+  usecase "Найти пациента" as B
+  usecase "Изменить данные пациента" as C
+  usecase "Посмотреть расписание" as D
+  usecase "Записать на приём" as E
+  usecase "Отменить запись" as F
+  usecase "Посмотреть список пациентов" as G
+  usecase "Сохранить результат приёма" as H
+}
+
+R -- A
+R -- B
+R -- C
+R -- D
+R -- E
+R -- F
+V -- G
+V -- H
+@enduml
