@@ -1,0 +1,8 @@
+poliklinika.db
+poliklinika.db-journal
+poliklinika.db-wal
+poliklinika.db-shm
+__pycache__/
+*.pyc
+.venv/
+venv/

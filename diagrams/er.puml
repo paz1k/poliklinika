@@ -1,0 +1,68 @@
+@startuml
+title Учёт пациентов в поликлинике
+hide circle
+skinparam linetype ortho
+
+entity "Пациенты (patients)" as patients {
+    * patient_id : INTEGER <<PK>>
+    --
+    * full_name : TEXT
+    * birth_date : TEXT
+    * oms_policy : TEXT <<UNIQUE>>
+    phone : TEXT
+}
+
+entity "Врачи (doctors)" as doctors {
+    * doctor_id : INTEGER <<PK>>
+    --
+    * full_name : TEXT
+    * specialty : TEXT
+    * office : TEXT
+}
+
+entity "Расписание (schedule)" as schedule {
+    * schedule_id : INTEGER <<PK>>
+    --
+    * doctor_id : INTEGER <<FK>>
+    * start_at : TEXT
+    * end_at : TEXT
+}
+
+entity "Записи на приём (appointments)" as appointments {
+    * appointment_id : INTEGER <<PK>>
+    --
+    * patient_id : INTEGER <<FK>>
+    * schedule_id : INTEGER <<FK>>
+    * status : TEXT
+}
+
+entity "Результаты приёма (visit_results)" as results {
+    * result_id : INTEGER <<PK>>
+    --
+    * appointment_id : INTEGER <<FK, UNIQUE>>
+    * conclusion : TEXT
+    recommendations : TEXT
+}
+
+doctors ||--o{ schedule
+patients ||--o{ appointments
+schedule ||--o{ appointments
+appointments ||--o| results
+
+note bottom of schedule
+    UNIQUE (doctor_id, start_at)
+    CHECK (end_at > start_at)
+end note
+
+note bottom of appointments
+    status: scheduled, completed, cancelled
+    На один интервал допускается
+    только одна неотменённая запись.
+end note
+
+legend
+    PK — первичный ключ
+    FK — внешний ключ
+    * — обязательное поле
+endlegend
+@enduml
