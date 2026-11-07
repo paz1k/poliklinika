@@ -1,0 +1,54 @@
+- appointment_id: 1
+  status: "completed"
+  patient:
+    id: 1
+    last_name: "Иванов"
+    first_name: "Иван"
+    patronymic: "Иванович"
+  schedule:
+    id: 1
+    start_at: "2026-10-13 09:00"
+    end_at: "2026-10-13 09:30"
+  doctor:
+    id: 1
+    last_name: "Смирнова"
+    first_name: "Елена"
+    patronymic: "Викторовна"
+    specialty: "Терапевт"
+    office: "101"
+- appointment_id: 2
+  status: "completed"
+  patient:
+    id: 2
+    last_name: "Петрова"
+    first_name: "Анна"
+    patronymic: "Сергеевна"
+  schedule:
+    id: 3
+    start_at: "2026-10-13 10:00"
+    end_at: "2026-10-13 10:30"
+  doctor:
+    id: 2
+    last_name: "Кузнецов"
+    first_name: "Андрей"
+    patronymic: "Николаевич"
+    specialty: "Хирург"
+    office: "203"
+- appointment_id: 3
+  status: "scheduled"
+  patient:
+    id: 3
+    last_name: "Сидоров"
+    first_name: "Алексей"
+    patronymic: "Павлович"
+  schedule:
+    id: 4
+    start_at: "2026-10-13 11:00"
+    end_at: "2026-10-13 11:30"
+  doctor:
+    id: 3
+    last_name: "Орлова"
+    first_name: "Мария"
+    patronymic: "Олеговна"
+    specialty: "Невролог"
+    office: "305"

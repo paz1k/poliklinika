@@ -1,5 +1,6 @@
 from src.services import services as svc
 from src.repositories import patient_repository as patients, doctor_repository as doctors, schedule_repository as schedules, appointment_repository as appointments, visit_result_repository as results
+from src.export_data import export_all
 
 def show_data():
     print('\nПациенты:')
@@ -37,7 +38,7 @@ def doctor_menu():
 
 def run():
     while True:
-        print('\n=== Поликлиника ===\n1. Войти\n2. Зарегистрироваться\n0. Выход')
+        print('\n=== Поликлиника ===\n1. Войти\n2. Зарегистрироваться\n3. Экспортировать записи в JSON/CSV/XML/YAML\n0. Выход')
         c=input('Выберите действие: ').strip()
         if c=='0': return
         try:
@@ -47,4 +48,6 @@ def run():
                 elif u.role=='registrar': registrar_menu()
                 else: doctor_menu()
             elif c=='2': svc.register(input('Логин: '),input('Пароль: ')); print('Регистрация выполнена')
+            elif c=='3':
+                for path in export_all(): print(f'Создан: {path.relative_to(svc.__dict__.get("PROJECT_DIR", path.parent.parent)) if False else path}')
         except (ValueError,TypeError) as e: print(f'Ошибка: {e}')
