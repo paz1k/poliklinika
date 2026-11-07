@@ -13,14 +13,19 @@ rectangle "Учёт пациентов в поликлинике" {
   usecase "Отменить запись" as F
   usecase "Посмотреть список пациентов" as G
   usecase "Сохранить результат приёма" as H
+  usecase "Войти в систему" as I
+  usecase "Зарегистрироваться" as J
 }
 
+R -- I
+R -- J
 R -- A
 R -- B
 R -- C
 R -- D
 R -- E
 R -- F
+V -- I
 V -- G
 V -- H
 @enduml
